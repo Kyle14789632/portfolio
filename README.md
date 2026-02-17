@@ -1,36 +1,173 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Alex Chen Portfolio
+
+A modern, responsive developer portfolio built with Next.js App Router, TypeScript, Tailwind CSS v4, Framer Motion, and `next-themes`.
+
+This project is a single-page portfolio experience with smooth section navigation, animated UI, project showcase cards, skill categories, and a contact section.
+
+## Table of Contents
+
+- Overview
+- Features
+- Tech Stack
+- Project Structure
+- Getting Started
+- Configuration and Customization
+- Theming
+- Deployment
+- Current Limitations
+
+## Overview
+
+The app renders a personal portfolio with these sections:
+
+- Hero (`#hero`)
+- Projects (`#projects`)
+- Skills (`#skills`)
+- Contact (`#contact`)
+
+The layout is composed in `src/app/page.tsx`, while site-wide metadata, fonts, and theme provider are configured in `src/app/layout.tsx`.
+
+## Features
+
+- Responsive, animated landing page with section-based navigation
+- Active section tracking in the navbar while scrolling
+- Mobile menu with animated open/close behavior
+- Light and dark mode support via `next-themes`
+- Reusable section wrapper with scroll-triggered reveal animations
+- Data-driven content managed from one file (`src/lib/data.ts`)
+- Project cards with gradient previews, tech tags, and external links
+- Contact form UI with optimistic/simulated submission states
+
+## Tech Stack
+
+- Framework: Next.js 16 (App Router)
+- Language: TypeScript + React 19
+- Styling: Tailwind CSS v4 + CSS custom properties
+- Animation: Framer Motion
+- Icons: Lucide React
+- Theme switching: `next-themes`
+- Linting: ESLint (Next.js config)
+
+## Project Structure
+
+```text
+.
+|- src/
+|  |- app/
+|  |  |- globals.css
+|  |  |- layout.tsx
+|  |  `- page.tsx
+|  |- components/
+|  |  |- Contact.tsx
+|  |  |- Footer.tsx
+|  |  |- Hero.tsx
+|  |  |- Navbar.tsx
+|  |  |- ProjectCard.tsx
+|  |  |- Projects.tsx
+|  |  |- SectionWrapper.tsx
+|  |  |- Skills.tsx
+|  |  |- ThemeProvider.tsx
+|  |  `- ThemeToggle.tsx
+|  `- lib/
+|     `- data.ts
+|- public/
+|- package.json
+`- README.md
+```
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 20+ recommended
+- npm (or yarn/pnpm/bun)
+
+### Install
+
+```bash
+npm install
+```
+
+### Run Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build and Start Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm run start
+```
 
-## Learn More
+### Lint
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run lint
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Configuration and Customization
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Most content is centralized in `src/lib/data.ts`.
 
-## Deploy on Vercel
+- `personalInfo`: name, title, bio, email, location
+- `projects`: portfolio cards (title, description, tags, links)
+- `skillCategories`: grouped skills shown in the skills section
+- `socialLinks`: social/contact icons in the contact card
+- `navLinks`: section links used by navbar and active-state logic
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+To personalize the portfolio quickly:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Replace placeholder personal details in `personalInfo`.
+2. Replace sample project entries and links in `projects`.
+3. Update skill groups and proficiency data in `skillCategories`.
+4. Update social profiles in `socialLinks`.
+
+## Theming
+
+Theme tokens are defined in `src/app/globals.css` using CSS variables:
+
+- Light theme under `:root`
+- Dark theme under `.dark`
+- Token bridge via `@theme inline` for Tailwind usage
+
+You can adjust brand color and atmosphere by updating variables such as:
+
+- `--accent`
+- `--gradient-from`
+- `--gradient-to`
+- `--background`
+- `--card`
+
+Theme switching is handled by:
+
+- `src/components/ThemeProvider.tsx`
+- `src/components/ThemeToggle.tsx`
+
+## Deployment
+
+This app can be deployed to any platform supporting Next.js:
+
+- Vercel (recommended)
+- Netlify
+- Railway
+- Self-hosted Node runtime
+
+Typical production flow:
+
+1. Set install command: `npm install`
+2. Set build command: `npm run build`
+3. Set start command: `npm run start`
+
+## Current Limitations
+
+- The contact form currently simulates submission in the client and does not send data to a backend service.
+- Project cards use gradient placeholders instead of real project thumbnails.
+- Some sample links/data in `src/lib/data.ts` are placeholders and should be replaced before production use.
+
+---
+
+If you want, I can also generate a second README variant focused on recruiters (shorter, with highlights first) and keep this one as a full developer reference.

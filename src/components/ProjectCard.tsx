@@ -32,7 +32,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       {/* Gradient placeholder image */}
       <div className="relative aspect-video overflow-hidden">
         <div
-          className={`flex h-full w-full items-center justify-center bg-gradient-to-br ${gradient} transition-transform duration-500 group-hover:scale-105`}
+          className={`flex h-full w-full items-center justify-center ${gradient} transition-transform duration-500 group-hover:scale-105`}
         >
           <div className="flex flex-col items-center gap-2 text-white/90">
             <span className="text-4xl font-bold tracking-wider">
@@ -46,7 +46,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
             </span>
           </div>
         </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+        <div className="absolute inset-0  from-card/80 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
         {/* Hover overlay links */}
         <div className="absolute inset-0 flex items-center justify-center gap-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100">

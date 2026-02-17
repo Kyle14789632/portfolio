@@ -98,27 +98,24 @@ export const skillCategories: SkillCategory[] = [
       { name: "TypeScript", level: 90 },
       { name: "Tailwind CSS", level: 92 },
       { name: "Framer Motion", level: 85 },
-      { name: "Vue.js", level: 75 },
     ],
   },
   {
     category: "Backend",
     skills: [
       { name: "Node.js", level: 90 },
-      { name: "Python", level: 85 },
+      { name: "Express", level: 85 },
+      { name: "REST API", level: 80 },
       { name: "PostgreSQL", level: 88 },
-      { name: "GraphQL", level: 80 },
-      { name: "Redis", level: 78 },
+      { name: "Prisma ORM", level: 78 },
     ],
   },
   {
     category: "Tools & DevOps",
     skills: [
       { name: "Git & GitHub", level: 92 },
-      { name: "Docker", level: 85 },
-      { name: "AWS / GCP", level: 80 },
-      { name: "CI/CD", level: 82 },
-      { name: "Linux", level: 78 },
+      { name: "Postman", level: 85 },
+      { name: "Codex", level: 85 },
     ],
   },
 ];
