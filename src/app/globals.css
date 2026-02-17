@@ -1,26 +1,148 @@
 @import "tailwindcss";
 
+/* ── Light theme (default) ───────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f8f9fc;
+  --foreground: #1a1a2e;
+  --card: #ffffff;
+  --card-border: rgba(0, 0, 0, 0.06);
+  --muted: #6b7280;
+  --muted-bg: #f1f5f9;
+  --accent: #6366f1;
+  --accent-hover: #4f46e5;
+  --accent-glow: rgba(99, 102, 241, 0.25);
+  --gradient-from: #6366f1;
+  --gradient-to: #a855f7;
+  --nav-bg: rgba(248, 249, 252, 0.8);
+  --nav-border: rgba(0, 0, 0, 0.06);
+  --input-bg: #ffffff;
+  --input-border: #e2e8f0;
+  --input-focus: #6366f1;
+  --section-alt: #f1f5f9;
+  --tag-bg: #eef2ff;
+  --tag-text: #4338ca;
+  --skeleton: #e2e8f0;
 }
 
+/* ── Dark theme ──────────────────────────────────────────────────── */
+.dark {
+  --background: #0b0d17;
+  --foreground: #e8eaf0;
+  --card: #141627;
+  --card-border: rgba(255, 255, 255, 0.06);
+  --muted: #94a3b8;
+  --muted-bg: #1e2035;
+  --accent: #818cf8;
+  --accent-hover: #6366f1;
+  --accent-glow: rgba(129, 140, 248, 0.2);
+  --gradient-from: #818cf8;
+  --gradient-to: #c084fc;
+  --nav-bg: rgba(11, 13, 23, 0.8);
+  --nav-border: rgba(255, 255, 255, 0.06);
+  --input-bg: #1e2035;
+  --input-border: #2d3052;
+  --input-focus: #818cf8;
+  --section-alt: #10122000;
+  --tag-bg: rgba(129, 140, 248, 0.12);
+  --tag-text: #a5b4fc;
+  --skeleton: #1e2035;
+}
+
+/* ── Tailwind theme bridge ───────────────────────────────────────── */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-border: var(--card-border);
+  --color-muted: var(--muted);
+  --color-muted-bg: var(--muted-bg);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-glow: var(--accent-glow);
+  --color-gradient-from: var(--gradient-from);
+  --color-gradient-to: var(--gradient-to);
+  --color-nav-bg: var(--nav-bg);
+  --color-nav-border: var(--nav-border);
+  --color-input-bg: var(--input-bg);
+  --color-input-border: var(--input-border);
+  --color-input-focus: var(--input-focus);
+  --color-section-alt: var(--section-alt);
+  --color-tag-bg: var(--tag-bg);
+  --color-tag-text: var(--tag-text);
+  --color-skeleton: var(--skeleton);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ── Global resets & base styles ─────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+::selection {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+/* ── Scrollbar styling ───────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--muted);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* ── Utility: animated gradient text ─────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, var(--gradient-from), var(--gradient-to));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Utility: glassmorphism ──────────────────────────────────────── */
+.glass {
+  background: var(--nav-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--nav-border);
+}
+
+/* ── Animated gradient orb (hero background) ─────────────────────── */
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -20px) scale(1.05);
+  }
+  66% {
+    transform: translate(-20px, 15px) scale(0.95);
+  }
+}
+
+.orb {
+  animation: float 8s ease-in-out infinite;
+}
+.orb-delayed {
+  animation: float 10s ease-in-out infinite;
+  animation-delay: -4s;
 }
